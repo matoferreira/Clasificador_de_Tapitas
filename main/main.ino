@@ -1,18 +1,32 @@
 #include <string.h>
 #include "COLOR.h"
+#include "Servo.h"
 #include <Wire.h>
 #include <LiquidCrystal_I2C.h>
+#include <Servo.h>
 
 //Creo el LCD 16x2
 LiquidCrystal_I2C lcd(0x27,16,2);
 // Declaro el botón, su pin y estado
 const int buttonPin = 2;
 int buttonState = 0;
+// Declaro Servomotor
+Servo servoMotor;
+// declaro contadores de tapitas
+int tapitasRojas = 0;
+int tapitasAzules = 0;
+int tapitasVerdes = 0;
+int tapitasAmarillas = 0;
+int tapitasBlancas = 0;
+int tapitasNegras = 0;
+int tapitasMarrones = 0;
+int otrasTapitas = 0;
   
-// Inicializo el monitor serial, el boton como input, el display 16x2 y escribo primeras instrucciones, inicializo el sensor.
+// Inicializo el monitor serial, el boton como input,el servomotor, el display 16x2 y escribo primeras instrucciones, inicializo el sensor.
 void setup() {
   Serial.begin(9600);
   pinMode(buttonPin, INPUT);
+  servoMotor.attach(3); //Asignamos el pin 3 al servomotor
   lcd.init();
   lcd.backlight();
   lcd.print("Iniciando");
