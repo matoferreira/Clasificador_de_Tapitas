@@ -1,2 +1,10 @@
 Primera prueba del sensor de color:
 https://youtu.be/XKfRD3GEG50
+Iteración 2 del clasificador de tapitas donde se agrega
+la pantalla y el botón:
+https://youtu.be/tM3tdxKVLik
+Iteración 2.5 del clasificador de tapitas, se hacen fixes:
+https://youtu.be/7NRbL0IJeFo
+Iteración 3 del clasificador de tapitas, se agrega el servomotor
+y se prueba la integración de todas las partes:
+https://youtu.be/uJPnuRxj49g
