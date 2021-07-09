@@ -1,6 +1,8 @@
 #include <string.h>
 #include "COLOR.h"
+//Como estamos utilizando el sensor y el LiquidCrystal con módulos I2C necesitamos importar una librería que nos permita usar los dos en el mismo
 #include <Wire.h>
+//Importación de librerías para el servomotr y para el LiquidCrystal_I2C
 #include <LiquidCrystal_I2C.h>
 #include <Servo.h>
 
@@ -30,14 +32,15 @@ void moverServo (String color)
   //    22.5     45      67.5      90        112.5       135         157.5        180
   if (color == "ROJO" || color == "NARANJA" || color == "MARRON")
   {
+    //Pese al cálculo que se hizo, se modifican los valores para atender la situación particular del servomotor emplazado en el sistema
     servoMotor.write(80);
     lcd.clear();
-    tapitasRojas++;
-    lcd.print("Categoria Rojo");
+    tapitasRojas++; //sumo uno al contador de tapitas rojas
+    lcd.print("Categoria Rojo"); //Imprimo la categoría que leí
     lcd.setCursor(0, 1);
-    lcd.print("Cantidad: " + String(tapitasRojas));
-    delay(3000);
-    servoMotor.write(60);
+    lcd.print("Cantidad: " + String(tapitasRojas)); //y cuantas tapitas voy clasificando
+    delay(3000); //El delay para que baje la tapita por el tobogán
+    servoMotor.write(60); //llevo al servo a una posición inicial
   }
   else if (color == "AZUL")
   {
@@ -151,7 +154,7 @@ void loop() {
     lcd.clear();
     Serial.println (COLOR_getColorName()); // Se obtiene el nombre del color que esté viendo el sensor y se imprime en el monitor (Herramientas > Monitor Serial)
     moverServo(COLOR_getColorName());
-    delay(1000); // Dejar un pequeño tiempo entre cada ciclo es bueno para que el Arduino no corra como loco. Si tienen un programa un poco más inteligente, no es necesario.
+    delay(1000); // Dejar un pequeño tiempo entre cada ciclo es bueno para que el Arduino no este leyendo muchos inputs. Si tienen un programa un poco más inteligente, no es necesario.
     lcd.clear();
     lcd.print("Para clasificar");
     lcd.setCursor(0, 1);
