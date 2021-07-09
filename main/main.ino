@@ -30,36 +30,36 @@ void moverServo (String color)
   //    22.5     45      67.5      90        112.5       135         157.5        180
   if (color == "ROJO" || color == "NARANJA" || color == "MARRON")
   {
-    servoMotor.write(22.5);
+    servoMotor.write(80);
     lcd.clear();
     tapitasRojas++;
     lcd.print("Categoria Rojo");
     lcd.setCursor(0, 1);
     lcd.print("Cantidad: " + String(tapitasRojas));
     delay(3000);
-    servoMotor.write(0);
+    servoMotor.write(60);
   }
   else if (color == "AZUL")
   {
-    servoMotor.write(45);
+    servoMotor.write(35);
     lcd.clear();
     tapitasAzules++;
     lcd.print("Categoria Azul");
     lcd.setCursor(0, 1);
     lcd.print("Cantidad: " + String(tapitasAzules));
     delay(3000);
-    servoMotor.write(0);
+    servoMotor.write(60);
   }
   else if (color == "VERDE")
   {
-    servoMotor.write(67.5);
+    servoMotor.write(2);
     lcd.clear();
     tapitasVerdes++;
     lcd.print("Categoria Verde");
     lcd.setCursor(0, 1);
     lcd.print("Cantidad: " + String(tapitasVerdes));
     delay(3000);
-    servoMotor.write(0);
+    servoMotor.write(60);
   }
   else if (color == "AMARILLO")
   {
@@ -140,6 +140,7 @@ void setup() {
   lcd.print("Pulse el boton");
   COLOR_init();
   Serial.println("Empezando lectura del sensor");
+  servoMotor.write(5);
 }
 
 // Leo el estado del botón, cuando el boton está en HIGH comienzo lectura del sensor.
